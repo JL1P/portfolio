@@ -23,5 +23,11 @@ logs
 .env.*
 !.env.example
 
+# Vercel local build output
+.vercel
+
+# Claude Code (local worktrees and settings)
+.claude
+
 #Own files
 notes.txt
