@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+
   app: {
     head: {
       link: [
@@ -14,8 +15,12 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   ssr: true,
+
   nitro: {
     preset: 'vercel',
   },
+
+  compatibilityDate: '2026-03-25',
 })
