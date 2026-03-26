@@ -4,7 +4,7 @@
     <div class="hero-content">
       <p class="hero-eyebrow">Available for work</p>
       <h1 class="hero-title">
-        Hi, I'm <span class="hero-name">Your Name</span>
+        Hi, I'm <span class="hero-name">Juan Almeida Ross</span>
       </h1>
       <p class="hero-subtitle">
         I craft fast, accessible web experiences with attention to detail and a focus on products people enjoy using.

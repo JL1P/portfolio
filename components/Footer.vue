@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <p class="copyright">
-      © {{ new Date().getFullYear() }} Your Name. Crafted with care.
+      © {{ new Date().getFullYear() }} Juan Almeida Ross. Crafted with care.
     </p>
   </footer>
 </template>

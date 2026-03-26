@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="navbar-inner">
-      <a href="#" class="logo">Your Name</a>
+      <a href="#" class="logo">Juan Almeida Ross</a>
       <div class="nav-links">
         <a href="#about" class="nav-link">About</a>
         <a href="#projects" class="nav-link">Projects</a>
