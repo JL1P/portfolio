@@ -3,8 +3,8 @@
     <div class="navbar-inner">
       <a href="#" class="logo">Juan Almeida Ross</a>
       <div class="nav-links">
-        <a href="#about" class="nav-link">About</a>
         <a href="#projects" class="nav-link">Projects</a>
+        <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link">Contact</a>
         <button type="button" class="theme-toggle" aria-label="Toggle theme" @click="toggleTheme">
           <svg v-if="isDark" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

@@ -19,16 +19,27 @@
             <span class="project-emoji" aria-hidden="true">{{ project.emoji }}</span>
           </div>
           <div class="project-body">
-            <h3 class="project-title">{{ project.title }}</h3>
+            <div class="project-title-row">
+              <h3 class="project-title">{{ project.title }}</h3>
+              <span v-if="project.status === 'in-progress'" class="badge-progress">In progress</span>
+            </div>
+            <div v-if="project.problem" class="project-meta-block">
+              <span class="meta-label">Problem</span>
+              <p class="meta-text">{{ project.problem }}</p>
+            </div>
             <p class="project-description">{{ project.description }}</p>
-            <div class="project-tech">
+            <div v-if="project.decision" class="project-meta-block">
+              <span class="meta-label">Decision</span>
+              <p class="meta-text">{{ project.decision }}</p>
+            </div>
+            <div v-if="project.tech.length" class="project-tech">
               <span v-for="tech in project.tech" :key="tech" class="tech-tag">
                 {{ tech }}
               </span>
             </div>
-            <div class="project-links">
-              <a href="#" class="project-link">Live demo</a>
-              <a href="#" class="project-link-muted">GitHub</a>
+            <div v-if="!project.status" class="project-links">
+              <a v-if="project.demo" :href="project.demo" class="project-link">Live demo</a>
+              <a v-if="project.github" :href="project.github" class="project-link-muted">GitHub</a>
             </div>
           </div>
         </article>
@@ -38,24 +49,41 @@
 </template>
 
 <script setup lang="ts">
-const projects = [
+interface Project {
+  emoji: string
+  title: string
+  problem?: string
+  description: string
+  decision?: string
+  tech: string[]
+  status?: 'in-progress'
+  github?: string
+  demo?: string
+}
+
+const projects: Project[] = [
   {
     emoji: '◆',
-    title: 'Project One',
-    description: 'A modern web application built with Vue.js and Nuxt, featuring real-time updates and responsive design.',
-    tech: ['Nuxt', 'Vue', 'CSS', 'Node.js'],
+    title: 'This Portfolio',
+    problem: 'No central place to show work or communicate how I think about engineering decisions.',
+    description: 'Built with Nuxt 3 and a custom CSS design token system — SSR-ready, dark mode, fully responsive.',
+    decision: 'Chose Nuxt over a plain Vue SPA for SSR and future routing flexibility. Skipped Tailwind to build a proper CSS custom property system from scratch.',
+    tech: ['Nuxt', 'Vue', 'TypeScript', 'CSS'],
+    github: '#',
   },
   {
     emoji: '◇',
-    title: 'Project Two',
-    description: 'An e-commerce platform with seamless payment integration and inventory management.',
-    tech: ['React', 'TypeScript', 'Stripe', 'PostgreSQL'],
+    title: 'Sprout',
+    description: 'Currently in early development.',
+    tech: [],
+    status: 'in-progress',
   },
   {
     emoji: '○',
-    title: 'Project Three',
-    description: 'A productivity tool that helps teams collaborate and manage tasks efficiently.',
-    tech: ['Vue', 'Firebase', 'CSS', 'GraphQL'],
+    title: 'Next project',
+    description: 'Coming soon.',
+    tech: [],
+    status: 'in-progress',
   },
 ]
 </script>
@@ -143,12 +171,53 @@ const projects = [
   flex: 1;
 }
 
+.project-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.5rem;
+  flex-wrap: wrap;
+}
+
 .project-title {
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin: 0 0 0.5rem;
+  margin: 0;
   color: var(--foreground);
+}
+
+.badge-progress {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-2) 25%, transparent);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.55rem;
+}
+
+.project-meta-block {
+  margin: 0 0 0.75rem;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.meta-text {
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.55;
 }
 
 .project-description {
