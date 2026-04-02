@@ -11,10 +11,10 @@
       <div class="about-grid">
         <div class="about-card about-text">
           <p>
-            I'm a full-stack developer with a passion for creating beautiful, functional, and user-friendly web applications. With several years of experience in web development, I specialize in building modern web apps using cutting-edge technologies.
+            I'm a full-stack developer focused on building products that are easy to work in — for the users and for the next engineer on the team. I lean into Vue and Nuxt on the frontend, and I try to document the decisions I make so they're easy to revisit or challenge later.
           </p>
           <p>
-            When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good cup of coffee.
+            I care about code that can be handed off cleanly: clear structure, honest trade-offs, and no magic that nobody understands six months later. Right now I'm focused on shipping real products and building up a body of work that shows how I think, not just what I've built.
           </p>
         </div>
         <div class="skills-panel">
@@ -32,14 +32,18 @@
 
 <script setup lang="ts">
 const skills = [
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Remix',
   'Vue.js',
   'Nuxt',
-  'React',
-  'TypeScript',
-  'Node.js',
+  'Django',
+  'Python',
   'Tailwind CSS',
+  'Bootstrap',
   'Git',
-  'PostgreSQL',
+  'HTML5',
 ]
 </script>
 

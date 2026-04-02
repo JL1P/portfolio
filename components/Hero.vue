@@ -2,12 +2,12 @@
   <section class="hero">
     <div class="hero-bg" aria-hidden="true" />
     <div class="hero-content">
-      <p class="hero-eyebrow">Available for work</p>
+      <p class="hero-eyebrow">Open to full-time roles</p>
       <h1 class="hero-title">
         Hi, I'm <span class="hero-name">Juan Almeida Ross</span>
       </h1>
       <p class="hero-subtitle">
-        I craft fast, accessible web experiences with attention to detail and a focus on products people enjoy using.
+        Full-stack developer who cares about the decisions behind the work — clean architecture, maintainable code, and interfaces that hold up as products grow.
       </p>
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">View work</a>
