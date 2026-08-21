@@ -5,6 +5,25 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      title: 'Juan Almeida Ross — Full-Stack Developer',
+      htmlAttrs: {
+        lang: 'en',
+      },
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Full-stack developer building with Vue, Nuxt, React, and Python. Open to full-time roles — see selected projects and the decisions behind them.',
+        },
+        { property: 'og:title', content: 'Juan Almeida Ross — Full-Stack Developer' },
+        {
+          property: 'og:description',
+          content:
+            'Full-stack developer building with Vue, Nuxt, React, and Python. Open to full-time roles.',
+        },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary' },
+      ],
       script: [
         {
           // Apply the saved/system theme before first paint so there's no

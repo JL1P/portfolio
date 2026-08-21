@@ -65,14 +65,27 @@ describe("Projects Component", () => {
     const { default: Projects } = await import("../components/Projects.vue");
     const wrapper = mount(Projects);
     const cards = wrapper.findAll(".project-card");
-    expect(cards.length).toBe(3);
+    expect(cards.length).toBe(2);
   });
 
-  it("renders first project with correct data", async () => {
+  it("renders Name Sprout first with problem/decision framing", async () => {
     const { default: Projects } = await import("../components/Projects.vue");
     const wrapper = mount(Projects);
     const firstCard = wrapper.find(".project-card");
-    expect(firstCard.find(".project-title").text()).toBe("This Portfolio");
+    expect(firstCard.find(".project-title").text()).toBe("Name Sprout");
+    expect(firstCard.find(".badge-progress").text()).toBe("In development");
+    expect(firstCard.findAll(".project-meta-block").length).toBe(2);
     expect(firstCard.find(".tech-tag").exists()).toBe(true);
+  });
+
+  it("links the portfolio card to its GitHub repo", async () => {
+    const { default: Projects } = await import("../components/Projects.vue");
+    const wrapper = mount(Projects);
+    const cards = wrapper.findAll(".project-card");
+    const portfolioCard = cards[1];
+    expect(portfolioCard.find(".project-title").text()).toBe("This Portfolio");
+    expect(portfolioCard.find(".project-link-muted").attributes("href")).toBe(
+      "https://github.com/JL1P/portfolio",
+    );
   });
 });

@@ -21,7 +21,7 @@
           <div class="project-body">
             <div class="project-title-row">
               <h3 class="project-title">{{ project.title }}</h3>
-              <span v-if="project.status === 'in-progress'" class="badge-progress">In progress</span>
+              <span v-if="project.status === 'in-progress'" class="badge-progress">In development</span>
             </div>
             <div v-if="project.problem" class="project-meta-block">
               <span class="meta-label">Problem</span>
@@ -63,27 +63,22 @@ interface Project {
 
 const projects: Project[] = [
   {
+    emoji: '◇',
+    title: 'Name Sprout',
+    problem: 'Choosing a baby name means digging through static lists with no way to personalize the search or build a shortlist together as a couple.',
+    description: 'iOS app with curated name collections, AI-generated suggestions by gender, origin, and style, and favorites that work offline as a guest and sync to your account on sign-in.',
+    decision: 'AI keys never ship in the app bundle — a Cloudflare Worker proxies a Gemini → GPT → Claude fallback chain with rate limiting and a local catalog as last resort. Favorites sit behind a repository interface so guest storage (AsyncStorage) and signed-in storage (Supabase with row-level security) swap cleanly, merging guest picks on sign-in.',
+    tech: ['React Native', 'Expo', 'TypeScript', 'Cloudflare Workers', 'Supabase'],
+    status: 'in-progress',
+  },
+  {
     emoji: '◆',
     title: 'This Portfolio',
     problem: 'No central place to show work or communicate how I think about engineering decisions.',
     description: 'Built with Nuxt 3 and a custom CSS design token system — SSR-ready, dark mode, fully responsive.',
     decision: 'Chose Nuxt over a plain Vue SPA for SSR and future routing flexibility. Skipped Tailwind to build a proper CSS custom property system from scratch.',
     tech: ['Nuxt', 'Vue', 'TypeScript', 'CSS'],
-    github: '#',
-  },
-  {
-    emoji: '◇',
-    title: 'Sprout',
-    description: 'Currently in early development.',
-    tech: [],
-    status: 'in-progress',
-  },
-  {
-    emoji: '○',
-    title: 'Next project',
-    description: 'Coming soon.',
-    tech: [],
-    status: 'in-progress',
+    github: 'https://github.com/JL1P/portfolio',
   },
 ]
 </script>
@@ -280,12 +275,6 @@ const projects: Project[] = [
 @media (min-width: 768px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 </style>
