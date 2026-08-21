@@ -4,6 +4,7 @@
       <a href="#" class="logo">Juan Almeida Ross</a>
       <div class="nav-links">
         <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link">Contact</a>
         <button type="button" class="theme-toggle" aria-label="Toggle theme" @click="toggleTheme">

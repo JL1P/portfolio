@@ -5,6 +5,7 @@
     <main>
       <Hero />
       <Projects />
+      <Experience />
       <About />
       <Contact />
     </main>

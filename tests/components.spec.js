@@ -89,3 +89,29 @@ describe("Projects Component", () => {
     );
   });
 });
+
+describe("Experience Component", () => {
+  it("renders the section with heading and entries", async () => {
+    const { default: Experience } = await import("../components/Experience.vue");
+    const wrapper = mount(Experience);
+    expect(wrapper.find("#experience").exists()).toBe(true);
+    expect(wrapper.find(".section-heading").text()).toBe("Where I've worked");
+    expect(wrapper.findAll(".experience-entry").length).toBe(3);
+  });
+
+  it("marks up periods with machine-readable time elements", async () => {
+    const { default: Experience } = await import("../components/Experience.vue");
+    const wrapper = mount(Experience);
+    const times = wrapper.findAll("time");
+    expect(times.length).toBeGreaterThanOrEqual(3);
+    for (const t of times) {
+      expect(t.attributes("datetime")).toBeTruthy();
+    }
+  });
+
+  it("contains no links — non-public work has nothing to click through to", async () => {
+    const { default: Experience } = await import("../components/Experience.vue");
+    const wrapper = mount(Experience);
+    expect(wrapper.findAll("a").length).toBe(0);
+  });
+});
