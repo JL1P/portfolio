@@ -12,6 +12,11 @@
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">View work</a>
         <a href="#contact" class="btn btn-ghost">Contact</a>
+        <a
+          href="/resume.pdf"
+          download="Juan-Almeida-Ross-Resume.pdf"
+          class="btn btn-ghost"
+        >Download resume</a>
       </div>
     </div>
   </section>
