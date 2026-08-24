@@ -79,6 +79,33 @@ describe("Projects Component", () => {
     expect(firstCard.find(".tech-tag").exists()).toBe(true);
   });
 
+  it("keeps the demo video unmounted until Watch demo is clicked", async () => {
+    const { default: Projects } = await import("../components/Projects.vue");
+    const wrapper = mount(Projects);
+    expect(wrapper.find("video").exists()).toBe(false);
+    const toggle = wrapper.find(".demo-toggle");
+    expect(toggle.text()).toBe("Watch demo");
+
+    await toggle.trigger("click");
+
+    const video = wrapper.find("video");
+    expect(video.exists()).toBe(true);
+    expect(video.attributes("preload")).toBe("none");
+    expect(video.attributes("controls")).toBeDefined();
+    expect(video.attributes("autoplay")).toBeUndefined();
+    expect(video.attributes("loop")).toBeUndefined();
+    expect(video.attributes("poster")).toBe("/images/name-sprout/demo-poster.webp");
+
+    const descId = video.attributes("aria-describedby");
+    const desc = wrapper.find(`#${descId}`);
+    expect(desc.exists()).toBe(true);
+    expect(desc.classes()).toContain("visually-hidden");
+    expect(desc.text()).toContain("Silent screen recording");
+
+    expect(wrapper.findAll(".project-shot").length).toBe(0);
+    expect(wrapper.find(".demo-toggle").text()).toBe("Show screenshots");
+  });
+
   it("links the portfolio card to its GitHub repo", async () => {
     const { default: Projects } = await import("../components/Projects.vue");
     const wrapper = mount(Projects);

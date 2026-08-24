@@ -15,7 +15,22 @@
           class="project-card"
           :class="`tone-${i % 3}`"
         >
-          <div v-if="project.images?.length" class="project-shots">
+          <div v-if="project.video && demoShown[project.title]" class="project-shots">
+            <video
+              class="project-demo-video"
+              controls
+              preload="none"
+              width="588"
+              height="1280"
+              :poster="project.video.poster"
+              :aria-label="project.video.label"
+              :aria-describedby="`demo-desc-${i}`"
+            >
+              <source :src="project.video.src" type="video/mp4" />
+            </video>
+            <p :id="`demo-desc-${i}`" class="visually-hidden">{{ project.video.description }}</p>
+          </div>
+          <div v-else-if="project.images?.length" class="project-shots">
             <img
               v-for="shot in project.images"
               :key="shot.src"
@@ -30,6 +45,11 @@
           </div>
           <div v-else class="project-visual">
             <span class="project-emoji" aria-hidden="true">{{ project.emoji }}</span>
+          </div>
+          <div v-if="project.video" class="demo-toggle-row">
+            <button type="button" class="demo-toggle" @click="toggleDemo(project.title)">
+              {{ demoShown[project.title] ? 'Show screenshots' : 'Watch demo' }}
+            </button>
           </div>
           <div class="project-body">
             <div class="project-title-row">
@@ -66,11 +86,22 @@
 </template>
 
 <script setup lang="ts">
+import { reactive } from 'vue'
+
 interface ProjectImage {
   src: string
   alt: string
   width: number
   height: number
+}
+
+interface ProjectVideo {
+  src: string
+  poster: string
+  /** Accessible name for the video element. */
+  label: string
+  /** Text alternative for a silent video, wired via aria-describedby. */
+  description: string
 }
 
 interface Project {
@@ -85,6 +116,13 @@ interface Project {
   demo?: string
   /** Screenshots shown in place of the gradient visual once assets exist. */
   images?: ProjectImage[]
+  /** Demo video, swapped into the strip area behind the Watch demo toggle. */
+  video?: ProjectVideo
+}
+
+const demoShown = reactive<Record<string, boolean>>({})
+const toggleDemo = (title: string) => {
+  demoShown[title] = !demoShown[title]
 }
 
 const projects: Project[] = [
@@ -110,6 +148,13 @@ const projects: Project[] = [
         height: 1252,
       },
     ],
+    video: {
+      src: '/video/name-sprout-demo-web.mp4',
+      poster: '/images/name-sprout/demo-poster.webp',
+      label: 'Name Sprout demo video',
+      description:
+        'Silent screen recording. The app opens on Discover, browses a curated name collection and saves a name, then moves to Generate, selects filters, generates AI suggestions and saves one of those. It ends on Favorites, where both saved names appear with their origins and meanings.',
+    },
   },
   {
     emoji: '◆',
@@ -184,6 +229,53 @@ const projects: Project[] = [
   .project-shot:not(:first-child) {
     display: none;
   }
+}
+
+.project-demo-video {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 360px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.demo-toggle-row {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 0.9rem;
+  background: color-mix(in srgb, var(--accent-soft) 60%, var(--background-elevated));
+}
+
+.demo-toggle {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--background-elevated);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.demo-toggle:hover {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .project-visual {
