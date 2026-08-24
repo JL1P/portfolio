@@ -15,7 +15,20 @@
           class="project-card"
           :class="`tone-${i % 3}`"
         >
-          <div class="project-visual">
+          <div v-if="project.images?.length" class="project-shots">
+            <img
+              v-for="shot in project.images"
+              :key="shot.src"
+              :src="shot.src"
+              :alt="shot.alt"
+              :width="shot.width"
+              :height="shot.height"
+              loading="lazy"
+              decoding="async"
+              class="project-shot"
+            />
+          </div>
+          <div v-else class="project-visual">
             <span class="project-emoji" aria-hidden="true">{{ project.emoji }}</span>
           </div>
           <div class="project-body">
@@ -49,6 +62,13 @@
 </template>
 
 <script setup lang="ts">
+interface ProjectImage {
+  src: string
+  alt: string
+  width: number
+  height: number
+}
+
 interface Project {
   emoji: string
   title: string
@@ -59,6 +79,8 @@ interface Project {
   status?: 'in-progress'
   github?: string
   demo?: string
+  /** Screenshots shown in place of the gradient visual once assets exist. */
+  images?: ProjectImage[]
 }
 
 const projects: Project[] = [
@@ -70,6 +92,20 @@ const projects: Project[] = [
     decision: 'AI keys never ship in the app bundle — a Cloudflare Worker proxies a Gemini → GPT → Claude fallback chain with rate limiting and a local catalog as last resort. Favorites sit behind a repository interface so guest storage (AsyncStorage) and signed-in storage (Supabase with row-level security) swap cleanly, merging guest picks on sign-in.',
     tech: ['React Native', 'Expo', 'TypeScript', 'Cloudflare Workers', 'Supabase'],
     status: 'in-progress',
+    images: [
+      {
+        src: '/images/name-sprout/generate.webp',
+        alt: "Name Sprout's generate screen with gender, origin and style filters selected, showing AI-generated name suggestions",
+        width: 576,
+        height: 1252,
+      },
+      {
+        src: '/images/name-sprout/favorites.webp',
+        alt: "Name Sprout's favorites screen listing saved names with their origins and descriptors",
+        width: 576,
+        height: 1252,
+      },
+    ],
   },
   {
     emoji: '◆',
@@ -102,6 +138,7 @@ const projects: Project[] = [
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  align-items: start;
 }
 
 .project-card {
@@ -119,6 +156,30 @@ const projects: Project[] = [
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
   border-color: color-mix(in srgb, var(--accent) 22%, var(--border));
+}
+
+.project-shots {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--accent-soft) 60%, var(--background-elevated));
+}
+
+.project-shot {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 360px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 480px) {
+  .project-shot:not(:first-child) {
+    display: none;
+  }
 }
 
 .project-visual {
@@ -264,12 +325,13 @@ const projects: Project[] = [
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--muted-foreground);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: color 0.2s ease;
 }
 
 .project-link-muted:hover {
-  color: var(--foreground);
+  color: var(--accent);
 }
 
 @media (min-width: 768px) {
