@@ -7,16 +7,19 @@
         Hi, I'm <span class="hero-name">Juan Almeida Ross</span>
       </h1>
       <p class="hero-subtitle">
-        Full-stack developer who cares about the decisions behind the work — clean architecture, maintainable code, and interfaces that hold up as products grow.
+        Full-stack developer who cares about the decisions behind the work —
+        clean architecture, maintainable code, and interfaces that hold up as
+        products grow.
       </p>
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">View work</a>
         <a href="#contact" class="btn btn-ghost">Contact</a>
         <a
           href="/resume.pdf"
-          download="Juan-Almeida-Ross-Resume.pdf"
+          download="Juan-Luis-Almeida-Ross-Resume.pdf"
           class="btn btn-ghost"
-        >Download resume</a>
+          >Download resume</a
+        >
       </div>
     </div>
   </section>
@@ -36,15 +39,27 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 100% 80% at 50% 100%, var(--accent-soft), transparent 55%),
+    radial-gradient(
+      ellipse 100% 80% at 50% 100%,
+      var(--accent-soft),
+      transparent 55%
+    ),
     radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.06), transparent 40%);
   pointer-events: none;
 }
 
 .dark .hero-bg {
   background:
-    radial-gradient(ellipse 100% 80% at 50% 100%, var(--accent-soft), transparent 55%),
-    radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.05), transparent 35%);
+    radial-gradient(
+      ellipse 100% 80% at 50% 100%,
+      var(--accent-soft),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(34, 211, 238, 0.05),
+      transparent 35%
+    );
 }
 
 .hero-content {
@@ -109,7 +124,12 @@
   font-weight: 600;
   text-decoration: none;
   border-radius: var(--radius-full);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .btn:active {
@@ -118,7 +138,11 @@
 
 .btn-primary {
   color: #fff;
-  background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 70%, var(--accent-2)) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 70%, var(--accent-2)) 100%
+  );
   box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
