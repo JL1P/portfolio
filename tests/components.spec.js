@@ -68,13 +68,14 @@ describe("Projects Component", () => {
     expect(cards.length).toBe(2);
   });
 
-  it("renders Name Sprout first with problem/decision framing", async () => {
+  it("renders Name Sprout first with problem/solution/decision framing", async () => {
     const { default: Projects } = await import("../components/Projects.vue");
     const wrapper = mount(Projects);
     const firstCard = wrapper.find(".project-card");
     expect(firstCard.find(".project-title").text()).toBe("Name Sprout");
     expect(firstCard.find(".badge-progress").text()).toBe("In development");
-    expect(firstCard.findAll(".project-meta-block").length).toBe(2);
+    const labels = firstCard.findAll(".meta-label").map((l) => l.text());
+    expect(labels).toEqual(["Problem", "Solution", "Decision"]);
     expect(firstCard.find(".tech-tag").exists()).toBe(true);
   });
 

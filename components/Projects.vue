@@ -40,7 +40,11 @@
               <span class="meta-label">Problem</span>
               <p class="meta-text">{{ project.problem }}</p>
             </div>
-            <p class="project-description">{{ project.description }}</p>
+            <div v-if="project.problem" class="project-meta-block">
+              <span class="meta-label">Solution</span>
+              <p class="meta-text">{{ project.description }}</p>
+            </div>
+            <p v-else class="project-description">{{ project.description }}</p>
             <div v-if="project.decision" class="project-meta-block">
               <span class="meta-label">Decision</span>
               <p class="meta-text">{{ project.decision }}</p>
