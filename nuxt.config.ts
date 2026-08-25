@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Juan Almeida Ross — Full-Stack Developer',
+      title: 'Juan Almeida Ross — Frontend Developer',
       htmlAttrs: {
         lang: 'en',
       },
@@ -13,13 +13,13 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Full-stack developer building with Vue, Nuxt, React, and Python. Open to full-time roles — see selected projects and the decisions behind them.',
+            'Frontend developer (React, TypeScript) building interfaces that hold up as products grow. Open to full-time roles — see selected projects and the decisions behind them.',
         },
-        { property: 'og:title', content: 'Juan Almeida Ross — Full-Stack Developer' },
+        { property: 'og:title', content: 'Juan Almeida Ross — Frontend Developer' },
         {
           property: 'og:description',
           content:
-            'Full-stack developer building with Vue, Nuxt, React, and Python. Open to full-time roles.',
+            'Frontend developer (React, TypeScript). Open to full-time roles.',
         },
         { property: 'og:type', content: 'website' },
         { name: 'twitter:card', content: 'summary' },

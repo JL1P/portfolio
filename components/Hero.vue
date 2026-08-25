@@ -7,9 +7,9 @@
         Hi, I'm <span class="hero-name">Juan Almeida Ross</span>
       </h1>
       <p class="hero-subtitle">
-        Full-stack developer who cares about the decisions behind the work —
-        clean architecture, maintainable code, and interfaces that hold up as
-        products grow.
+        Frontend developer (React, TypeScript) focused on the decisions behind
+        the interface — state, performance, and accessibility choices that
+        hold up as products grow.
       </p>
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">View work</a>

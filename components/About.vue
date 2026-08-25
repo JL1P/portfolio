@@ -5,18 +5,18 @@
         <span class="section-eyebrow">About</span>
         <h2 class="section-heading">Building with clarity and care</h2>
         <p class="section-intro">
-          Full-stack developer focused on interfaces that feel effortless and
-          systems that stay maintainable as products grow.
+          Frontend developer focused on interfaces that feel effortless and
+          code that stays maintainable as products grow.
         </p>
       </header>
       <div class="about-grid">
         <div class="about-card about-text">
           <p>
-            I'm a full-stack developer focused on building products that are
+            I'm a frontend developer focused on building products that are
             easy to work in — for the users and for the next engineer on the
-            team. I lean into Vue and Nuxt on the frontend, and I try to
-            document the decisions I make so they're easy to revisit or
-            challenge later.
+            team. Most of my work is in React and TypeScript — this site is Vue
+            and Nuxt — and I try to document the decisions I make so they're
+            easy to revisit or challenge later.
           </p>
           <p>
             I care about code that can be handed off cleanly: clear structure,
