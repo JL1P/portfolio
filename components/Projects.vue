@@ -153,7 +153,7 @@ const projects: Project[] = [
       poster: '/images/name-sprout/demo-poster.webp',
       label: 'Name Sprout demo video',
       description:
-        'Silent screen recording. The app opens on Discover, browses a curated name collection and saves a name, then moves to Generate, selects filters, generates AI suggestions and saves one of those. It ends on Favorites, where both saved names appear with their origins and meanings.',
+        'Silent screen recording. The app opens on Discover, browses a curated name collection and saves a name, then moves to Generate, selects filters, generates AI suggestions and saves one of those. It then signs in through a hosted auth dialog, and Favorites still shows both names afterward — the names saved as a guest carried into the account.',
     },
   },
   {
