@@ -118,6 +118,65 @@ describe("Projects Component", () => {
   });
 });
 
+describe("Contact Component", () => {
+  it("shows the email address as visible text", async () => {
+    const { default: Contact } = await import("../components/Contact.vue");
+    const wrapper = mount(Contact);
+    expect(wrapper.text()).toContain("jluisar13@gmail.com");
+  });
+
+  it("keeps the address as a mailto link", async () => {
+    const { default: Contact } = await import("../components/Contact.vue");
+    const wrapper = mount(Contact);
+    expect(wrapper.find(".contact-email-link").attributes("href")).toBe(
+      "mailto:jluisar13@gmail.com",
+    );
+  });
+
+  it("gives the copy button a real accessible name", async () => {
+    const { default: Contact } = await import("../components/Contact.vue");
+    const wrapper = mount(Contact);
+    const btn = wrapper.find(".copy-btn");
+    expect(btn.element.tagName).toBe("BUTTON");
+    expect(btn.text().trim()).toBe("Copy email address");
+  });
+
+  it("announces success in the live region when the clipboard write resolves", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    vi.stubGlobal("navigator", { clipboard: { writeText } });
+
+    const { default: Contact } = await import("../components/Contact.vue");
+    const wrapper = mount(Contact);
+
+    await wrapper.find(".copy-btn").trigger("click");
+    await vi.waitUntil(() => wrapper.find(".copy-status").text() !== "");
+
+    expect(writeText).toHaveBeenCalledWith("jluisar13@gmail.com");
+    const status = wrapper.find(".copy-status");
+    expect(status.attributes("aria-live")).toBe("polite");
+    expect(status.text()).toBe("Copied to clipboard");
+    expect(status.classes()).toContain("copy-status-visible");
+
+    vi.unstubAllGlobals();
+  });
+
+  it("reports failure instead of claiming success when the clipboard is unavailable", async () => {
+    vi.stubGlobal("navigator", {});
+
+    const { default: Contact } = await import("../components/Contact.vue");
+    const wrapper = mount(Contact);
+
+    await wrapper.find(".copy-btn").trigger("click");
+    await vi.waitUntil(() => wrapper.find(".copy-status").text() !== "");
+
+    const status = wrapper.find(".copy-status");
+    expect(status.text()).not.toBe("Copied to clipboard");
+    expect(status.text().toLowerCase()).toContain("couldn't copy");
+
+    vi.unstubAllGlobals();
+  });
+});
+
 describe("Experience Component", () => {
   it("renders the section with heading and entries", async () => {
     const { default: Experience } = await import("../components/Experience.vue");

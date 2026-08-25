@@ -10,19 +10,21 @@
         </p>
       </header>
       <div class="contact-card">
-        <a href="mailto:jluisar13@gmail.com" class="contact-btn">
-          <span>Say hello</span>
-          <svg
-            class="contact-btn-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
+        <div class="contact-email-row">
+          <a href="mailto:jluisar13@gmail.com" class="contact-email-link">
+            jluisar13@gmail.com
+          </a>
+          <button type="button" class="copy-btn" @click="copyEmail">
+            Copy email address
+          </button>
+        </div>
+        <p
+          class="copy-status"
+          :class="{ 'copy-status-visible': copyStatus }"
+          aria-live="polite"
+        >
+          {{ copyStatus }}
+        </p>
         <div class="social-links">
           <a
             href="https://github.com/JL1P"
@@ -56,6 +58,28 @@
   </section>
 </template>
 
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const EMAIL = 'jluisar13@gmail.com'
+const copyStatus = ref('')
+let resetTimer: ReturnType<typeof setTimeout> | null = null
+
+async function copyEmail() {
+  if (resetTimer) clearTimeout(resetTimer)
+  try {
+    if (!navigator.clipboard) throw new Error('Clipboard API unavailable')
+    await navigator.clipboard.writeText(EMAIL)
+    copyStatus.value = 'Copied to clipboard'
+  } catch {
+    copyStatus.value = "Couldn't copy — select the address above"
+  }
+  resetTimer = setTimeout(() => {
+    copyStatus.value = ''
+  }, 4000)
+}
+</script>
+
 <style scoped>
 .contact {
   padding: 5.5rem 1.25rem 6rem;
@@ -85,40 +109,63 @@
   box-shadow: var(--shadow-md);
 }
 
-.contact-btn {
-  display: inline-flex;
+.contact-email-row {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 20rem;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
+  gap: 0.75rem;
+}
+
+.contact-email-link {
+  font-size: 1.0625rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--accent);
   text-decoration: none;
+  word-break: break-word;
+}
+
+.contact-email-link:hover {
+  text-decoration: underline;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  background: transparent;
+  border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  background: linear-gradient(
-    135deg,
-    var(--accent) 0%,
-    color-mix(in srgb, var(--accent) 75%, var(--accent-2)) 100%
-  );
-  box-shadow: 0 6px 24px color-mix(in srgb, var(--accent) 32%, transparent);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
-.contact-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 32px color-mix(in srgb, var(--accent) 40%, transparent);
+.copy-btn:hover {
+  color: var(--foreground);
+  border-color: var(--border-strong);
+  background: var(--accent-soft);
 }
 
-.contact-btn:active {
-  transform: translateY(0);
+.copy-status {
+  min-height: 1.25rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.contact-btn-icon {
-  width: 1.125rem;
-  height: 1.125rem;
+.copy-status-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-status {
+    transition: none;
+  }
 }
 
 .social-links {
