@@ -25,7 +25,13 @@
               </p>
             </div>
             <p class="experience-company">{{ job.company }}</p>
-            <p class="experience-summary">{{ job.summary }}</p>
+            <p
+              v-for="para in job.summary"
+              :key="para"
+              class="experience-summary"
+            >
+              {{ para }}
+            </p>
             <ul class="experience-stack" aria-label="Technologies used">
               <li v-for="tech in job.stack" :key="tech" class="stack-item">
                 {{ tech }}
@@ -47,42 +53,48 @@ interface Job {
   startLabel: string
   end?: string
   endLabel?: string
-  summary: string
+  /** One entry per rendered paragraph. */
+  summary: string[]
   stack: string[]
 }
 
-// Placeholder entries — replace role/company/dates/summary/stack with real copy.
 const experience: Job[] = [
   {
-    role: 'Role title',
-    company: 'Company name · Location',
-    start: '2025-01',
-    startLabel: 'Jan 2025',
-    summary:
-      'Placeholder — one or two sentences on what you owned in this role and the outcome it drove.',
-    stack: ['Tech one', 'Tech two', 'Tech three'],
+    role: 'Frontend Developer',
+    company: 'Payabli · Remote',
+    start: '2024-05',
+    startLabel: 'May 2024',
+    end: '2025-06',
+    endLabel: 'Jun 2025',
+    summary: [
+      "Payments infrastructure startup. I built and maintained the customer-facing portal in Remix and TypeScript, and launched one section of it from scratch with a second developer. The piece I'd point to is a pay-by-phone IVR flow I built end to end on a PCI-compliant voice platform — call flow, data handling, and API integration at each step — now running in production against live transactions.",
+      "I also shipped an Apple Pay integration and the frontend for moving user management onto a role-based access model, and worked through the portal's accessibility audit: ARIA, semantic markup, keyboard and screen reader navigation.",
+    ],
+    stack: ['Remix', 'TypeScript', 'React', 'Plum Fuse'],
   },
   {
-    role: 'Role title',
-    company: 'Company name · Location',
-    start: '2023-06',
-    startLabel: 'Jun 2023',
-    end: '2024-12',
-    endLabel: 'Dec 2024',
-    summary:
-      'Placeholder — one or two sentences on what you owned in this role and the outcome it drove.',
-    stack: ['Tech one', 'Tech two'],
+    role: 'Web Developer',
+    company: 'BYT Digital Marketing Agency · Havana',
+    start: '2021-03',
+    startLabel: 'Mar 2021',
+    end: '2022-12',
+    endLabel: 'Dec 2022',
+    summary: [
+      'Digital agency serving business clients. I built the frontend of an order management system in Vue for an office equipment repair company, covering the full service lifecycle — intake, approval, technician and courier assignment, completion tracking. I also built the 7 Wireless site in Vue 3 for a Miami repair retailer and did the UI design myself, since the project had no designer. Sprint-based, with client demos at each milestone.',
+    ],
+    stack: ['Vue 3', 'JavaScript', 'Figma'],
   },
   {
-    role: 'Role title',
-    company: 'Company name · Location',
-    start: '2022-01',
-    startLabel: 'Jan 2022',
-    end: '2023-05',
-    endLabel: 'May 2023',
-    summary:
-      'Placeholder — one or two sentences on what you owned in this role and the outcome it drove.',
-    stack: ['Tech one', 'Tech two'],
+    role: 'Web Developer',
+    company: 'Independent Projects · Havana',
+    start: '2019-09',
+    startLabel: 'Sep 2019',
+    end: '2021-03',
+    endLabel: 'Mar 2021',
+    summary: [
+      'Self-directed work before agency employment. I built a full-stack sales tracking application in Django for a prepaid internet card reseller — modeling card categories and price tiers, with reporting over sales activity. First time I owned something from data model to deployed interface.',
+    ],
+    stack: ['Django', 'Python'],
   },
 ]
 </script>
