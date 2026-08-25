@@ -8,7 +8,7 @@ A log of meaningful choices made in this project and the reasoning behind them. 
 
 **Decision:** Use Nuxt 3 as the framework instead of a plain Vite + Vue setup.
 
-**Why:** SSR (server-side rendering) gives a faster first contentful paint without extra configuration, which matters for a portfolio where the first impression counts. Nuxt also provides file-based routing out of the box — not needed now, but useful if pages like `/blog` or `/case-studies` are added later. Deploys are zero-config through Nitro's provider presets — originally Vercel, now Cloudflare Pages (see the deploy-target entry below).
+**Why:** SSR (server-side rendering) gives a faster first contentful paint without extra configuration, which matters for a portfolio where the first impression counts. Nuxt also provides file-based routing out of the box — not needed now, but useful if pages like `/blog` or `/case-studies` are added later. Deploys are zero-config through Nitro's provider presets — originally Vercel, now Cloudflare Workers (see the deploy-target entry below).
 
 **Trade-off:** More opinionated than plain Vue. For a project this small, Nuxt is slight overkill — but the upside outweighs the cost.
 
@@ -44,10 +44,10 @@ A log of meaningful choices made in this project and the reasoning behind them. 
 
 ---
 
-## Cloudflare Pages over Vercel (deploy target)
+## Cloudflare Workers over Vercel (deploy target)
 
-**Decision:** Move the deploy target to Cloudflare Pages, and make the config provider-agnostic by deleting the hardcoded Nitro preset instead of swapping it for Cloudflare's.
+**Decision:** Move hosting to Cloudflare Workers through Wrangler's Nuxt integration — the `cloudflare_module` Nitro preset with `deployConfig: true` — after a brief stop on preset-less auto-detection.
 
-**Why:** Access to my Vercel account was interrupted, and I wasn't going to leave the site down waiting on support. Cloudflare Pages offers the same Git-connect flow, and Nuxt needs no provider-specific code to run there: Nitro detects the CI environment at build time and emits the right output format for whichever platform is building. The old config hardcoded `preset: 'vercel'`, which silently disabled that detection — a Cloudflare build would have produced Vercel's output format. Removing the line, rather than pinning `cloudflare-pages`, means the repo deploys correctly on both and I'm not one account decision away from being down again.
+**Why:** Access to my Vercel account was interrupted, and I wasn't going to leave the site down waiting on support. The first cut deleted the hardcoded `vercel` preset so Nitro's CI detection could serve either provider. But deploying through Wrangler rather than a Pages-style Git flow wants the Cloudflare preset wired in explicitly, and Wrangler generates and maintains that config itself against Nuxt ≥3.21 — so the config pins `cloudflare_module`, the build emits the authoritative wrangler.json, and the Nuxt 3.13 → 3.21 upgrade came along as the price of admission.
 
-**Trade-off:** Zero-config detection means the build output depends on where it runs — a local `npm run build` produces a plain Node server build, not what either host actually serves, so "it builds locally" proves less than it looks. And `vercel.json` stays in the repo even though Cloudflare ignores it — a little inert config in exchange for keeping the other path deployable.
+**Trade-off:** The config is provider-shaped again — leaving Cloudflare would mean touching nuxt.config.ts, which the auto-detect step briefly avoided. That's the honest cost of a real deploy pipeline over a hypothetical portable one. vercel.json is gone for the same reason: config describing a host this repo doesn't deploy to misleads more than it preserves.
