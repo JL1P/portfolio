@@ -4,7 +4,11 @@
   "compatibility_date": "2026-08-20",
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    { "pattern": "jl-dev.com", "custom_domain": true },
+    { "pattern": "www.jl-dev.com", "custom_domain": true }
+  ]
   // `main`, `assets` and `compatibility_flags` are intentionally absent: the
   // Nitro cloudflare_module preset merges this file into
   // .output/server/wrangler.json at build time and wrangler is redirected
