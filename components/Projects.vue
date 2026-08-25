@@ -235,8 +235,8 @@ const projects: Project[] = [
   display: block;
   width: auto;
   max-width: 100%;
-  height: auto;
-  max-height: 360px;
+  height: 360px;
+  aspect-ratio: 588 / 1280;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
 }
