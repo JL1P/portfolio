@@ -80,7 +80,7 @@ const experience: Job[] = [
     end: '2022-12',
     endLabel: 'Dec 2022',
     summary: [
-      'Digital agency serving business clients. I built the frontend of an order management system in Vue for an office equipment repair company, covering the full service lifecycle — intake, approval, technician and courier assignment, completion tracking. I also built the 7 Wireless site in Vue 3 for a Miami repair retailer and did the UI design myself, since the project had no designer. Sprint-based, with client demos at each milestone.',
+      'Digital agency serving business clients. I built the frontend of an order management system in Vue for an office equipment repair company, covering the full service lifecycle — intake, approval, technician and courier assignment, completion tracking. I also built the 7 Wireless site in Vue 3 for a Miami repair retailer, designing it directly in code since the project had no designer — a multi-page marketing site with a quote flow, service and product sections, and store locations. Sprint-based, with client demos at each milestone.',
     ],
     stack: ['Vue 3', 'JavaScript', 'Figma'],
   },
