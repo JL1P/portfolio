@@ -4,10 +4,10 @@
   "compatibility_date": "2026-08-20",
   "observability": {
     "enabled": true
-  },
-  "main": "./.output/server/index.mjs",
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "./.output/public/"
   }
+  // `main`, `assets` and `compatibility_flags` are intentionally absent: the
+  // Nitro cloudflare_module preset merges this file into
+  // .output/server/wrangler.json at build time and wrangler is redirected
+  // there via .wrangler/deploy/config.json. Setting them here only produced
+  // "overridden and will be ignored" warnings. Build before deploying.
 }
