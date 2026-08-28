@@ -116,6 +116,25 @@ describe("Projects Component", () => {
       "https://github.com/JL1P/portfolio",
     );
   });
+
+  it("still renders a links block for an in-progress project that has a link", async () => {
+    const { default: Projects } = await import("../components/Projects.vue");
+    const wrapper = mount(Projects);
+    const firstCard = wrapper.find(".project-card");
+    expect(firstCard.find(".badge-progress").text()).toBe("In development");
+    expect(firstCard.find(".project-links").exists()).toBe(true);
+    expect(firstCard.find(".project-link-muted").exists()).toBe(true);
+  });
+
+  it("overrides the GitHub link label when the repo isn't the source code", async () => {
+    const { default: Projects } = await import("../components/Projects.vue");
+    const wrapper = mount(Projects);
+    const cards = wrapper.findAll(".project-card");
+    const nameSproutLabel = cards[0].find(".project-link-label");
+    expect(nameSproutLabel.text()).toBe("Architecture notes");
+    const portfolioLabel = cards[1].find(".project-link-label");
+    expect(portfolioLabel.text()).toBe("GitHub");
+  });
 });
 
 describe("Contact Component", () => {
