@@ -18,8 +18,7 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Juan Almeida Ross — Frontend Developer' },
         {
           property: 'og:description',
-          content:
-            'Frontend developer (React, TypeScript). Open to full-time roles.',
+          content: 'Frontend developer (React, TypeScript). Open to full-time roles.',
         },
         { property: 'og:type', content: 'website' },
         { name: 'twitter:card', content: 'summary' },
@@ -51,13 +50,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-03-25',
 
   nitro: {
-    preset: "cloudflare_module",
+    preset: 'cloudflare_module',
 
     cloudflare: {
       deployConfig: true,
-      nodeCompat: true
-    }
+      nodeCompat: true,
+    },
   },
 
-  modules: ["nitro-cloudflare-dev"]
+  modules: ['nitro-cloudflare-dev'],
 })

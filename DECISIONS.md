@@ -30,7 +30,7 @@ A log of meaningful choices made in this project and the reasoning behind them. 
 
 **Why:** Avoids flash of wrong theme on load. No backend or cookies needed — everything lives in the browser. The system preference fallback means first-time visitors get the right theme automatically.
 
-**Trade-off:** The theme has to be applied in two steps. An inline script in `<head>` (see `nuxt.config.ts`) toggles the `dark` class on `<html>` before first paint — that element is outside Vue's hydration scope, so it's safe to touch early. The Vue state (`useTheme`) syncs on `app:mounted` instead of during plugin setup: syncing earlier made the client render a different navbar icon than the server HTML and triggered a hydration mismatch. The cost is a split implementation across two files; the benefit is no theme flash *and* clean hydration.
+**Trade-off:** The theme has to be applied in two steps. An inline script in `<head>` (see `nuxt.config.ts`) toggles the `dark` class on `<html>` before first paint — that element is outside Vue's hydration scope, so it's safe to touch early. The Vue state (`useTheme`) syncs on `app:mounted` instead of during plugin setup: syncing earlier made the client render a different navbar icon than the server HTML and triggered a hydration mismatch. The cost is a split implementation across two files; the benefit is no theme flash _and_ clean hydration.
 
 ---
 

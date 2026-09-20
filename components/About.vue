@@ -5,24 +5,23 @@
         <span class="section-eyebrow">About</span>
         <h2 class="section-heading">Building with clarity and care</h2>
         <p class="section-intro">
-          Frontend developer focused on interfaces that feel effortless and
-          code that stays maintainable as products grow.
+          Frontend developer focused on interfaces that feel effortless and code that stays
+          maintainable as products grow.
         </p>
       </header>
       <div class="about-grid">
         <div class="about-card about-text">
           <p>
-            I'm a frontend developer focused on building products that are
-            easy to work in — for the users and for the next engineer on the
-            team. Most of my work is in React and TypeScript — this site is Vue
-            and Nuxt — and I try to document the decisions I make so they're
-            easy to revisit or challenge later.
+            I'm a frontend developer focused on building products that are easy to work in — for the
+            users and for the next engineer on the team. Most of my work is in React and TypeScript
+            — this site is Vue and Nuxt — and I try to document the decisions I make so they're easy
+            to revisit or challenge later.
           </p>
           <p>
-            I care about code that can be handed off cleanly: clear structure,
-            honest trade-offs, and no magic that nobody understands six months
-            later. Right now I'm focused on shipping real products and building
-            up a body of work that shows how I think, not just what I've built.
+            I care about code that can be handed off cleanly: clear structure, honest trade-offs,
+            and no magic that nobody understands six months later. Right now I'm focused on shipping
+            real products and building up a body of work that shows how I think, not just what I've
+            built.
           </p>
         </div>
         <div class="skills-panel">
@@ -40,30 +39,26 @@
 
 <script setup lang="ts">
 const skills = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Remix",
-  "Vue.js",
-  "Nuxt",
-  "Django",
-  "Python",
-  "Tailwind CSS",
-  "Bootstrap",
-  "Git",
-  "HTML5",
-];
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Remix',
+  'Vue.js',
+  'Nuxt',
+  'Django',
+  'Python',
+  'Tailwind CSS',
+  'Bootstrap',
+  'Git',
+  'HTML5',
+]
 </script>
 
 <style scoped>
 .about {
   padding: 5.5rem 1.25rem;
   border-top: 1px solid var(--border);
-  background: color-mix(
-    in srgb,
-    var(--background-elevated) 40%,
-    var(--background)
-  );
+  background: color-mix(in srgb, var(--background-elevated) 40%, var(--background));
 }
 
 .about-content {
@@ -135,11 +130,7 @@ const skills = [
   font-weight: 600;
   text-align: center;
   color: var(--foreground);
-  background: color-mix(
-    in srgb,
-    var(--background-elevated) 88%,
-    var(--accent-soft)
-  );
+  background: color-mix(in srgb, var(--background-elevated) 88%, var(--accent-soft));
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   transition:

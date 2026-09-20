@@ -9,11 +9,7 @@
         </p>
       </header>
       <ol class="experience-list">
-        <li
-          v-for="job in experience"
-          :key="`${job.role}-${job.company}`"
-          class="experience-item"
-        >
+        <li v-for="job in experience" :key="`${job.role}-${job.company}`" class="experience-item">
           <article class="experience-entry">
             <div class="experience-topline">
               <h3 class="experience-role">{{ job.role }}</h3>
@@ -25,11 +21,7 @@
               </p>
             </div>
             <p class="experience-company">{{ job.company }}</p>
-            <p
-              v-for="para in job.summary"
-              :key="para"
-              class="experience-summary"
-            >
+            <p v-for="para in job.summary" :key="para" class="experience-summary">
               {{ para }}
             </p>
             <ul class="experience-stack" aria-label="Technologies used">

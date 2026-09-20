@@ -3,21 +3,15 @@
     <div class="hero-bg" aria-hidden="true" />
     <div class="hero-content">
       <p class="hero-eyebrow">Open to full-time roles</p>
-      <h1 class="hero-title">
-        Hi, I'm <span class="hero-name">Juan Almeida Ross</span>
-      </h1>
+      <h1 class="hero-title">Hi, I'm <span class="hero-name">Juan Almeida Ross</span></h1>
       <p class="hero-subtitle">
-        Frontend developer (React, TypeScript) focused on the decisions behind
-        the interface — state, performance, and accessibility choices that
-        hold up as products grow.
+        Frontend developer (React, TypeScript) focused on the decisions behind the interface —
+        state, performance, and accessibility choices that hold up as products grow.
       </p>
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">View work</a>
         <a href="#contact" class="btn btn-ghost">Contact</a>
-        <a
-          href="/resume.pdf"
-          download="Juan-Luis-Almeida-Ross-Resume.pdf"
-          class="btn btn-ghost"
+        <a href="/resume.pdf" download="Juan-Luis-Almeida-Ross-Resume.pdf" class="btn btn-ghost"
           >Download resume</a
         >
       </div>
@@ -39,27 +33,15 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 100% 80% at 50% 100%,
-      var(--accent-soft),
-      transparent 55%
-    ),
+    radial-gradient(ellipse 100% 80% at 50% 100%, var(--accent-soft), transparent 55%),
     radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.06), transparent 40%);
   pointer-events: none;
 }
 
 .dark .hero-bg {
   background:
-    radial-gradient(
-      ellipse 100% 80% at 50% 100%,
-      var(--accent-soft),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(34, 211, 238, 0.05),
-      transparent 35%
-    );
+    radial-gradient(ellipse 100% 80% at 50% 100%, var(--accent-soft), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.05), transparent 35%);
 }
 
 .hero-content {

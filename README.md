@@ -12,12 +12,12 @@ A modern, minimal developer portfolio website built with Nuxt 3 and Vue 3. Featu
 
 ## Sections
 
-| Section | Description |
-|---------|-------------|
-| **Hero** | Landing with availability badge, intro text, and CTA buttons |
-| **About** | Bio and skills grid (Vue.js, Nuxt, React, TypeScript, Node.js, Tailwind CSS, Git, PostgreSQL) |
-| **Projects** | Project showcase with tech tags and links to live demos and GitHub |
-| **Contact** | Email CTA and social links (GitHub, LinkedIn, Twitter) |
+| Section      | Description                                                                                   |
+| ------------ | --------------------------------------------------------------------------------------------- |
+| **Hero**     | Landing with availability badge, intro text, and CTA buttons                                  |
+| **About**    | Bio and skills grid (Vue.js, Nuxt, React, TypeScript, Node.js, Tailwind CSS, Git, PostgreSQL) |
+| **Projects** | Project showcase with tech tags and links to live demos and GitHub                            |
+| **Contact**  | Email CTA and social links (GitHub, LinkedIn, Twitter)                                        |
 
 ## Features
 

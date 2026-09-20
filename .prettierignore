@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+
+# Nuxt/Nitro build & dev output
+.nuxt
+.output
+.nitro
+.cache
+.data
+dist
+build
+
+# Cloudflare
+.wrangler
+
+# Vercel local build output
+.vercel
+
+# Coverage
+coverage
+
+# Lockfiles (not meant to be hand-formatted)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Misc
+.DS_Store
+*.log

@@ -1,8 +1,6 @@
 <template>
   <footer class="footer">
-    <p class="copyright">
-      © {{ new Date().getFullYear() }} Juan Almeida Ross. Crafted with care.
-    </p>
+    <p class="copyright">© {{ new Date().getFullYear() }} Juan Almeida Ross. Crafted with care.</p>
   </footer>
 </template>
 

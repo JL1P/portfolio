@@ -5,24 +5,16 @@
         <span class="section-eyebrow">Contact</span>
         <h2 class="section-heading">Let's build something</h2>
         <p class="section-intro">
-          Open to roles and collaborations. Reach out by email or connect on
-          social—I'll get back to you soon.
+          Open to roles and collaborations. Reach out by email or connect on social—I'll get back to
+          you soon.
         </p>
       </header>
       <div class="contact-card">
         <div class="contact-email-row">
-          <a href="mailto:jluisar13@gmail.com" class="contact-email-link">
-            jluisar13@gmail.com
-          </a>
-          <button type="button" class="copy-btn" @click="copyEmail">
-            Copy email address
-          </button>
+          <a href="mailto:jluisar13@gmail.com" class="contact-email-link"> jluisar13@gmail.com </a>
+          <button type="button" class="copy-btn" @click="copyEmail">Copy email address</button>
         </div>
-        <p
-          class="copy-status"
-          :class="{ 'copy-status-visible': copyStatus }"
-          aria-live="polite"
-        >
+        <p class="copy-status" :class="{ 'copy-status-visible': copyStatus }" aria-live="polite">
           {{ copyStatus }}
         </p>
         <div class="social-links">
@@ -84,11 +76,7 @@ async function copyEmail() {
 .contact {
   padding: 5.5rem 1.25rem 6rem;
   border-top: 1px solid var(--border);
-  background: color-mix(
-    in srgb,
-    var(--background-elevated) 35%,
-    var(--background)
-  );
+  background: color-mix(in srgb, var(--background-elevated) 35%, var(--background));
 }
 
 .contact-inner {
@@ -139,7 +127,10 @@ async function copyEmail() {
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .copy-btn:hover {
@@ -182,14 +173,13 @@ async function copyEmail() {
   width: 3rem;
   height: 3rem;
   color: var(--muted-foreground);
-  background: color-mix(
-    in srgb,
-    var(--background) 80%,
-    var(--background-elevated)
-  );
+  background: color-mix(in srgb, var(--background) 80%, var(--background-elevated));
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease,
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
     background 0.2s ease;
 }
 

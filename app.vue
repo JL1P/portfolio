@@ -19,7 +19,9 @@
   min-height: 100vh;
   background-color: var(--background);
   color: var(--foreground);
-  transition: background-color 0.35s ease, color 0.35s ease;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
   overflow-x: clip;
 }
 
