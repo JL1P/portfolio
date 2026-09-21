@@ -32,25 +32,25 @@ A modern, minimal developer portfolio website built with Nuxt 3 and Vue 3. Featu
 Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Build for production:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Preview the production build locally:
 
 ```bash
-npm run preview
+pnpm run preview
 ```
 
 ## Deployment
