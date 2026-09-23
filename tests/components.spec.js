@@ -63,7 +63,8 @@ describe('Projects Component', () => {
     const { default: Projects } = await import('../components/Projects.vue')
     const wrapper = mount(Projects)
     const cards = wrapper.findAll('.project-card')
-    expect(cards.length).toBe(2)
+    // The Portfolio card is temporarily commented out in Projects.vue.
+    expect(cards.length).toBe(1)
   })
 
   it('renders Name Sprout first with problem/solution/decision framing', async () => {
@@ -104,6 +105,9 @@ describe('Projects Component', () => {
     expect(wrapper.find('.demo-toggle').text()).toBe('Show screenshots')
   })
 
+  // The Portfolio card is temporarily commented out in Projects.vue —
+  // restore this test alongside it.
+  /*
   it('links the portfolio card to its GitHub repo', async () => {
     const { default: Projects } = await import('../components/Projects.vue')
     const wrapper = mount(Projects)
@@ -114,6 +118,7 @@ describe('Projects Component', () => {
       'https://github.com/JL1P/portfolio',
     )
   })
+  */
 
   it('still renders a links block for an in-progress project that has a link', async () => {
     const { default: Projects } = await import('../components/Projects.vue')
@@ -130,8 +135,10 @@ describe('Projects Component', () => {
     const cards = wrapper.findAll('.project-card')
     const nameSproutLabel = cards[0].find('.project-link-label')
     expect(nameSproutLabel.text()).toBe('Architecture notes')
-    const portfolioLabel = cards[1].find('.project-link-label')
-    expect(portfolioLabel.text()).toBe('GitHub')
+    // Portfolio card (default 'GitHub' label) is commented out in
+    // Projects.vue — restore this assertion alongside it.
+    // const portfolioLabel = cards[1].find('.project-link-label')
+    // expect(portfolioLabel.text()).toBe('GitHub')
   })
 })
 

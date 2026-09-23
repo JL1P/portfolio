@@ -177,6 +177,11 @@ const projects: Project[] = [
         'Silent screen recording. The app opens on Discover, browses a curated name collection and saves a name, then moves to Generate, selects filters, generates AI suggestions and saves one of those. It then signs in through a hosted auth dialog, and Favorites still shows both names afterward — the names saved as a guest carried into the account.',
     },
   },
+  // Temporarily hidden from the grid — kept here, not deleted, so it's a
+  // one-line uncomment to bring back. See the :only-child centering rule
+  // in the <style> block below, which reverts automatically once this
+  // card returns and the grid has two items again.
+  /*
   {
     emoji: '◆',
     title: 'This Portfolio',
@@ -189,6 +194,7 @@ const projects: Project[] = [
     tech: ['Nuxt', 'Vue', 'TypeScript', 'CSS'],
     github: 'https://github.com/JL1P/portfolio',
   },
+  */
 ]
 </script>
 
@@ -212,6 +218,16 @@ const projects: Project[] = [
   grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: start;
+}
+
+/* When only one card is present (e.g. the Portfolio card is commented
+   out above), center it instead of leaving it pinned to the first
+   column of the two-up grid. Reverts automatically once a second
+   card is back and this no longer matches. */
+.projects-grid:has(.project-card:only-child) {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 32rem;
+  margin-inline: auto;
 }
 
 .project-card {
